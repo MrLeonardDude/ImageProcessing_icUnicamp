@@ -42,9 +42,6 @@ def changeBrightness(img):
 
 changeBrightness(img)
 
-
-
-
 # print image dimensions and type
 #   print img.shape, img.dtype
 
