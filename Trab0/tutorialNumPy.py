@@ -1,5 +1,3 @@
-
-
 from scipy import misc
 from scipy import ndimage
 import numpy as np
@@ -10,7 +8,7 @@ img = misc.imread('baboon.png')
 plt.imshow(img, cmap='gray')
 plt.show()
 
-
+#function 1
 def drawHistogram(img):
     #flatten the array to a vector
     a = np.asarray(img).reshape(-1)
@@ -19,9 +17,9 @@ def drawHistogram(img):
     plt.title('Histograma de Imagens')
     plt.ylabel('Frequency')
     plt.show()
-
 drawHistogram(img)
 
+#function 2
 def getParameters(img):
     x, y = img.shape
     mini, medi, maxim = img.min(), img.mean(), img.max()
@@ -30,16 +28,15 @@ def getParameters(img):
     print 'Intensidade minima:', mini
     print 'Intensidade media:', medi
     print 'Intensidade maxima:', maxim
-
 getParameters(img)
 
+#function 3
 def changeBrightness(img):
     aux_img = 255 - img
     #print 'img original', img
     #print 'img ferrada', aux_img
     plt.imshow(aux_img, cmap='gray')
     plt.show()
-
 changeBrightness(img)
 
 # print image dimensions and type
