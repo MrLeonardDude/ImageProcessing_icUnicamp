@@ -20,7 +20,7 @@ def drawHistogram(img):
     plt.ylabel('Frequency')
     plt.show()
 
-#drawHistogram(img)
+drawHistogram(img)
 
 def getParameters(img):
     x, y = img.shape
@@ -31,7 +31,7 @@ def getParameters(img):
     print 'Intensidade media:', medi
     print 'Intensidade maxima:', maxim
 
-#getParameters(img)
+getParameters(img)
 
 def changeBrightness(img):
     aux_img = 255 - img
