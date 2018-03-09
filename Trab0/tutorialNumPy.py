@@ -11,11 +11,6 @@ plt.imshow(img, cmap='gray')
 plt.show()
 
 
-#print 'matriz'
-#print img
-
-#print 'matriz vetorizada'
-#print a
 def drawHistogram(img):
     #flatten the array to a vector
     a = np.asarray(img).reshape(-1)
