@@ -35,17 +35,16 @@ getParameters(img)
 
 def changeBrightness(img):
     aux_img = 255 - img
-    #print 'img original', img
-    #print 'img ferrada', aux_img
     plt.imshow(aux_img, cmap='gray')
     plt.show()
 
 changeBrightness(img)
 
 def changeBrightnessSpecific(img):
-    aux_img = 180 - (12 * (255 - img)/51)
-    #print 'img original', img
-    #print 'img ferrada', aux_img
+    aux_img = (120 + (36 * img/51))
+    aux_img = aux_img.astype(int)
+    #print ('img original', img)
+    #print ('img ferrada', aux_img)
     plt.imshow(aux_img, cmap='gray')
     plt.show()
 
