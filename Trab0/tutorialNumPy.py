@@ -42,6 +42,16 @@ def changeBrightness(img):
 
 changeBrightness(img)
 
+def changeBrightnessSpecific(img):
+    aux_img = 180 - (12 * (255 - img)/51)
+    #print 'img original', img
+    #print 'img ferrada', aux_img
+    plt.imshow(aux_img, cmap='gray')
+    plt.show()
+
+changeBrightnessSpecific(img)
+
+
 # print image dimensions and type
 #   print img.shape, img.dtype
 
