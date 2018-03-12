@@ -25,11 +25,11 @@ drawHistogram(img)
 def getParameters(img):
     x, y = img.shape
     mini, medi, maxim = img.min(), img.mean(), img.max()
-    print 'largura:', x
-    print 'altura:', y
-    print 'Intensidade minima:', mini
-    print 'Intensidade media:', medi
-    print 'Intensidade maxima:', maxim
+    (print 'largura:', x)
+    (print 'altura:', y)
+    (print 'Intensidade minima:', mini)
+    (print 'Intensidade media:', medi)
+    (print 'Intensidade maxima:', maxim)
 
 getParameters(img)
 
