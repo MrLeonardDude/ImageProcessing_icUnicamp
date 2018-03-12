@@ -41,7 +41,8 @@ def changeBrightness(img):
 changeBrightness(img)
 
 def changeBrightnessSpecific(img):
-    aux_img = (120 + (36 * img/51))
+    aux_img = np.where(img < 120 , 120 + img*36/51, img)
+    aux_img = np.where(aux_img > 180 , 120 + aux_img*36/51, aux_img)
     aux_img = aux_img.astype(int)
     #print ('img original', img)
     #print ('img ferrada', aux_img)
