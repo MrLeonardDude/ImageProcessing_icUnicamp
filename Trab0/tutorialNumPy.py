@@ -49,7 +49,7 @@ def changeBrightnessSpecific(img):
     #aux_img = aux_img.astype(int)
     #print ('img original', img)
     #print ('img ferrada', aux_img)
-    skimage.exposure.rescale_intensity(img, out_range=(120, 180))
+    skimage.exposure.rescale_intensity(img, in_range=(0, 255),out_range=(120, 180))
     plt.imshow(img, cmap='gray')
     plt.show()
 
