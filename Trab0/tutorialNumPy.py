@@ -3,8 +3,11 @@ from scipy import ndimage
 import numpy as np
 import matplotlib.pyplot as plt
 
+
+img_name = raw_input('Digite o nome da imagem:')
+
 # open image file and stores it in a numpy array
-img = misc.imread('baboon.png')
+img = misc.imread(img_name)
 plt.imshow(img, cmap='gray')
 plt.show()
 
@@ -38,6 +41,16 @@ def changeBrightness(img):
     plt.imshow(aux_img, cmap='gray')
     plt.show()
 changeBrightness(img)
+
+def changeBrightnessSpecific(img):
+    #aux_img = 120 + img*36/51
+    #aux_img = aux_img.astype(int)
+    #print ('img original', img)
+    #print ('img ferrada', aux_img)
+    plt.imshow(img, cmap='gray', clim=(120, 180))
+    plt.show()
+
+changeBrightnessSpecific(img)
 
 # print image dimensions and type
 #   print img.shape, img.dtype
