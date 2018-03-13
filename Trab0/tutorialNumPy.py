@@ -1,7 +1,9 @@
 from scipy import misc
 from scipy import ndimage
+from skimage import exposure
 import numpy as np
 import matplotlib.pyplot as plt
+
 
 
 img_name = raw_input('Digite o nome da imagem:')
@@ -47,7 +49,8 @@ def changeBrightnessSpecific(img):
     #aux_img = aux_img.astype(int)
     #print ('img original', img)
     #print ('img ferrada', aux_img)
-    plt.imshow(img, cmap='gray', clim=(120, 180))
+    skimage.exposure.rescale_intensity(img, out_range=(120, 180))
+    plt.imshow(img, cmap='gray')
     plt.show()
 
 changeBrightnessSpecific(img)
