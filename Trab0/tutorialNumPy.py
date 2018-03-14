@@ -1,5 +1,4 @@
 from scipy import misc
-from scipy import ndimage
 from skimage import exposure as exp
 import numpy as np
 import matplotlib.pyplot as plt
