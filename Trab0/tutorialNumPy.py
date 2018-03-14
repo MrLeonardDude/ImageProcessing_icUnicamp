@@ -4,8 +4,6 @@ from skimage import exposure
 import numpy as np
 import matplotlib.pyplot as plt
 
-
-
 img_name = raw_input('Digite o nome da imagem:')
 
 # open image file and stores it in a numpy array
