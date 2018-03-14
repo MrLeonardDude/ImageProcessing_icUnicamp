@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 img_name = input('Digite o nome da imagem:')
 
 # Utilizando misc e pyplot, a imagem eh aberta
-img = misc.imread(img_name)
+img = misc.imread(img_name + '.png')
 plt.imshow(img, cmap='gray')
 plt.show()
 
@@ -27,19 +27,19 @@ drawHistogram(img)
 def getParameters(img):
     x, y = img.shape
     mini, medi, maxim = img.min(), img.mean(), img.max()
-    print ('largura:', x)
-    print ('altura:', y)
-    print ('Intensidade minima:', mini)
-    print ('Intensidade media:', medi)
-    print ('Intensidade maxima:', maxim)
+    print 'largura:', x
+    print 'altura:', y
+    print 'Intensidade minima:', mini
+    print 'Intensidade media:', medi
+    print 'Intensidade maxima:', maxim
 getParameters(img)
 
 #Funcao responsavel pela transformacao negativa da imagem
-def changeBrightness(img):
+def changeBrightnessNegative(img):
     aux_img = 255 - img
     plt.imshow(aux_img, cmap='gray')
     plt.show()
-changeBrightness(img)
+changeBrightnessNegative(img)
 
 #Funcao responsavel pela transformacao de intervalo da imagem
 def changeBrightnessSpecific(img):
