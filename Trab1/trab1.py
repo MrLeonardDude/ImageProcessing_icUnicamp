@@ -32,17 +32,19 @@ img_flip = util.invert(grey_img)
 
 label_img, num = label(img_flip, None, None, True, None)
 regions = regionprops(label_img)
+fig, ax = plt.subplots()
+ax.imshow(img_flip, cmap='gray')
 
-#for n, region in enumerate(regions):
-#    x, y = region.local_centroid
-#    draw.text((50*x, 50*y), "1", 1)
+for n, region in enumerate(regions):
+    #print (region.centroid)
+    x, y = region.centroid
+    print (x, y)
+    ax.text(y-10, x+10, str(n), style='italic')
 
-plt.imshow(im, cmap='gray')
 plt.show()
 
 # Display the image and plot all contours found
 contours = measure.find_contours(grey_img, 0.8)
-fig, ax = plt.subplots()
 ax.imshow(grey_img, interpolation='nearest', cmap=plt.cm.gray)
 
 #contorno - Item 1.2
