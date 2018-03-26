@@ -9,8 +9,8 @@ from skimage.measure import label, regionprops
 from PIL import Image, ImageDraw, ImageFont
 import matplotlib.pyplot as plt
 
+#histograma - Item 1.4
 def drawHistogram(img):
-    #flatten the array to a vector
     a = np.asarray(img).reshape(-1)
     plt.hist(a, bins='auto')
     plt.xlabel('Area')
@@ -18,36 +18,26 @@ def drawHistogram(img):
     plt.ylabel('Numero de Objetos')
     plt.show()
 
-
 #Pede-se o input da imagem que sera avaliada
 img_name = input('Digite o nome da imagem:')
 
-# Utilizando misc e pyplot, a imagem eh aberta
 img = misc.imread(img_name + '.png')
 grey_img = color.rgb2grey(img)
 img_flip = util.invert(grey_img)
 
-#im = Image.fromarray(img)
-#draw = ImageDraw.Draw(im)
-
-label_img, num = label(img_flip, None, None, True, None)
-regions = regionprops(label_img)
-fig, ax = plt.subplots()
-ax.imshow(img_flip, cmap='gray')
-
-for n, region in enumerate(regions):
-    #print (region.centroid)
-    x, y = region.centroid
-    print (x, y)
-    ax.text(y-10, x+10, str(n), style='italic')
-
+#Transformacao de Cores - Item 1.1
+plt.imshow(grey_img, cmap='gray')
 plt.show()
 
-# Display the image and plot all contours found
+
+fig, ax = plt.subplots()
+label_img, num = label(img_flip, None, None, True, None)
+regions = regionprops(label_img)
+
+#Contorno dos Objetos - Item 1.2
 contours = measure.find_contours(grey_img, 0.8)
 ax.imshow(grey_img, interpolation='nearest', cmap=plt.cm.gray)
 
-#contorno - Item 1.2
 for n, contour in enumerate(contours):
     ax.plot(contour[:, 1], contour[:, 0], linewidth=2)
 
@@ -56,12 +46,13 @@ ax.set_xticks([])
 ax.set_yticks([])
 plt.show()
 
+
+#Propriedades do Objeto - Item 1.3
 smallArea = 0
 mediumArea = 0
 bigArea = 0
 regArray = []
-
-#Propriedades do Objeto - Item 1.3
+print('Item 1.3 - Propriedades do Objeto')
 for n, reg in enumerate(regions):
     regArray.append(reg.filled_area)
     if(reg.filled_area < 1500):
@@ -72,8 +63,21 @@ for n, reg in enumerate(regions):
         bigArea = bigArea + 1
     print('regiao: ', n, ' perimetro: ', int(reg.perimeter), ' area: ', reg.filled_area)
 
+print()
+#Rotulando Imagens
+ax.imshow(img_flip, cmap='gray')
+
+for n, region in enumerate(regions):
+    x, y = region.centroid
+    ax.text(y-10, x+10, str(n), style='italic')
+
+plt.show()
+
+print('Item 1.4 - Classificao dos Objetos')
+# Histograma de  Area dos Objetos - 1.4 - Classificao dos Objetos
 print('numero de regioes pequenas: ', smallArea)
 print('numero de regioes medias: ', mediumArea)
 print('numero de regioes grandes: ', bigArea)
 
+#Item 1.4
 drawHistogram(regArray)
