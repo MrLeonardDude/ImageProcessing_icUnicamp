@@ -10,9 +10,10 @@ from PIL import Image, ImageDraw, ImageFont
 import matplotlib.pyplot as plt
 
 #histograma - Item 1.4
-def drawHistogram(img):
+def drawHistogram(img, img_name):
     a = np.asarray(img).reshape(-1)
-    plt.hist(a, bins='auto')
+    plt.hist(a, bins=[0,1500,3000,5000])
+    plt.savefig(img_name + 'histograma.png')
     plt.xlabel('Area')
     plt.title('histograma de area dos objetos')
     plt.ylabel('Numero de Objetos')
@@ -24,6 +25,7 @@ img_name = input('Digite o nome da imagem:')
 img = misc.imread(img_name + '.png')
 grey_img = color.rgb2grey(img)
 img_flip = util.invert(grey_img)
+misc.imsave(img_name + 'Cinza.png', grey_img)
 
 #Transformacao de Cores - Item 1.1
 plt.imshow(grey_img, cmap='gray')
@@ -45,6 +47,8 @@ ax.axis('image')
 ax.set_xticks([])
 ax.set_yticks([])
 plt.show()
+fig.savefig(img_name + 'Contorno.png')
+
 
 
 #Propriedades do Objeto - Item 1.3
@@ -64,20 +68,20 @@ for n, reg in enumerate(regions):
     print('regiao: ', n, ' perimetro: ', int(reg.perimeter), ' area: ', reg.filled_area)
 
 print()
-#Rotulando Imagens
-ax.imshow(img_flip, cmap='gray')
 
+#Rotulando Imagens
+fig2, ax2 = plt.subplots()
+ax2.imshow(img_flip, cmap='gray')
 for n, region in enumerate(regions):
     x, y = region.centroid
-    ax.text(y-10, x+10, str(n), style='italic')
-
+    ax2.text(y-10, x+10, str(n), style='italic')
 plt.show()
+fig2.savefig(img_name + 'Rotulado.png')
 
 print('Item 1.4 - Classificao dos Objetos')
 # Histograma de  Area dos Objetos - 1.4 - Classificao dos Objetos
 print('numero de regioes pequenas: ', smallArea)
 print('numero de regioes medias: ', mediumArea)
 print('numero de regioes grandes: ', bigArea)
-
 #Item 1.4
-drawHistogram(regArray)
+drawHistogram(regArray, img_name)
