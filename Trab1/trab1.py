@@ -1,13 +1,9 @@
-from skimage import measure
+import matplotlib.pyplot as plt
 import numpy as np
-from skimage.filters import threshold_otsu
-from skimage.segmentation import clear_border
-from skimage.morphology import closing, square
+from skimage import measure
 from scipy import misc
 from skimage import color, util
 from skimage.measure import label, regionprops
-from PIL import Image, ImageDraw, ImageFont
-import matplotlib.pyplot as plt
 
 #histograma - Item 1.4
 def drawHistogram(img, img_name):
